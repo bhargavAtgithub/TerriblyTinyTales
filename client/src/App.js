@@ -33,9 +33,9 @@ function App() {
     var output = "";
     var url = "";
     if (algo === "ENCRYPT") {
-      url = "https://pacific-beyond-02926.herokuapp.com//shorten";
+      url = "https://pacific-beyond-02926.herokuapp.com/shorten";
     } else if (algo === "DECRYPT") {
-      url = "https://pacific-beyond-02926.herokuapp.com//original";
+      url = "https://pacific-beyond-02926.herokuapp.com/original";
     }
     output = await fetch(url, {
       method: "POST",
