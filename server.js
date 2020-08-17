@@ -18,8 +18,31 @@ app.use((req, res, next) => {
 
 const port = process.env.PORT || 3001;
 
+// Creating an instance of stringCompression function from stringFunctions.js
+const stringFunctions = require("./stringFunctions");
 
+const shorten = (req) => {
+  var compressedString = stringFunctions.stringCompression(req["inputString"]);
+  return compressedString;
+};
+
+const original = (req) => {
+  var originalValue = stringFunctions.toOriginalString(req["inputString"]);
+  return originalValue;
+};
+
+app.post("/shorten", (req, res) => {
+  var body = req.body;
+  var shortenValue = shorten(body);
+  return res.status(200).send(shortenValue);
+});
+
+app.post("/original", (req, res) => {
+  var body = req.body;
+  var originalValue = original(body);
+  return res.status(200).send(originalValue);
+});
 
 app.listen(port, () => {
-  console.log("Server Up and running.");
+  console.log("Server Up and running at PORT ", port);
 });
