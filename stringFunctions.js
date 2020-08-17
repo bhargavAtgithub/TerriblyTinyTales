@@ -35,27 +35,16 @@ function toOriginalString(code) {
       originalString = originalString + currentLetter;
       index = index + 1;
       currentLetter = code[index];
-      console.log(
-        "originalString",
-        originalString,
-        "index",
-        index,
-        "currentLetter",
-        currentLetter
-      );
     } else if (Number.isInteger(parseInt(code[index]))) {
-      originalString =
-        originalString + code[index - 1].repeat(currentLetter - 1);
+      var letter = code[index - 1];
+      var number = parseInt(code[index]);
+      while (Number.isInteger(parseInt(code[index + 1]))) {
+        number = number * 10 + parseInt(code[index + 1]);
+        index = index + 1;
+      }
+      originalString = originalString + letter.repeat(number);
       index = index + 1;
       currentLetter = code[index];
-      console.log(
-        "originalString",
-        originalString,
-        "index",
-        index,
-        "currentLetter",
-        currentLetter
-      );
     }
   }
   return originalString;
