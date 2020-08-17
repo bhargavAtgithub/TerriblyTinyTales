@@ -29,15 +29,33 @@ function toOriginalString(code) {
   var originalString = "";
   var lengthOfCode = code.length;
   var currentLetter = code[index];
-  while (index !== lengthOfCode) {
+  while (index < lengthOfCode) {
+    console.log("index", index, "lengthOFCode", lengthOfCode);
     if (!Number.isInteger(parseInt(code[index]))) {
       originalString = originalString + currentLetter;
       index = index + 1;
       currentLetter = code[index];
+      console.log(
+        "originalString",
+        originalString,
+        "index",
+        index,
+        "currentLetter",
+        currentLetter
+      );
     } else if (Number.isInteger(parseInt(code[index]))) {
-      originalString = originalString + originalString[-1].repeat(code[index]);
+      originalString =
+        originalString + code[index - 1].repeat(currentLetter - 1);
       index = index + 1;
       currentLetter = code[index];
+      console.log(
+        "originalString",
+        originalString,
+        "index",
+        index,
+        "currentLetter",
+        currentLetter
+      );
     }
   }
   return originalString;
