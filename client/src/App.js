@@ -11,15 +11,15 @@ import Container from "./components/Container/Container.component";
 import CustomButton from "./components/CustomButton/CustomButton.component";
 
 function App() {
-  const [algo, setAlgo] = useState("ENCRYPT");
+  const [algo, setAlgo] = useState("COMPRESS");
   const [inputString, setInputString] = useState("");
   const [outputString, setOutputString] = useState("");
 
   const handleAlgo = () => {
-    if (algo === "ENCRYPT") {
-      setAlgo("DECRYPT");
+    if (algo === "COMPRESS") {
+      setAlgo("DECOMPRESS");
     } else {
-      setAlgo("ENCRYPT");
+      setAlgo("COMPRESS");
     }
     setInputString("");
     setOutputString("");
@@ -32,16 +32,11 @@ function App() {
   const convert = async () => {
     var output = "";
     var url = "";
-    if (algo === "ENCRYPT") {
+    if (algo === "COMPRESS") {
       url = "https://pacific-beyond-02926.herokuapp.com/shorten";
-    } else if (algo === "DECRYPT") {
+    } else if (algo === "DECOMPRESS") {
       url = "https://pacific-beyond-02926.herokuapp.com/original";
     }
-    // if (algo === "ENCRYPT") {
-    //   url = "http://localhost:3001/shorten";
-    // } else if (algo === "DECRYPT") {
-    //   url = "https://pacific-beyond-02926.herokuapp.com/original";
-    // }
 
     output = await fetch(url, {
       method: "POST",
