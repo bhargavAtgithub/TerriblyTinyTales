@@ -30,12 +30,12 @@ const port = process.env.PORT || 3001;
 const stringFunctions = require("./stringFunctions");
 
 const shorten = (req) => {
-  var compressedString = stringFunctions.stringToNumber(req["inputString"]);
+  var compressedString = stringFunctions.stringCompress(req["inputString"]);
   return compressedString;
 };
 
 const original = (req) => {
-  var originalValue = stringFunctions.toOriginalString(req["inputString"]);
+  var originalValue = stringFunctions.stringDecompress(req["inputString"]);
   return originalValue;
 };
 
