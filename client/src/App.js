@@ -37,6 +37,12 @@ function App() {
     } else if (algo === "DECRYPT") {
       url = "https://pacific-beyond-02926.herokuapp.com/original";
     }
+    // if (algo === "ENCRYPT") {
+    //   url = "http://localhost:3001/shorten";
+    // } else if (algo === "DECRYPT") {
+    //   url = "https://pacific-beyond-02926.herokuapp.com/original";
+    // }
+
     output = await fetch(url, {
       method: "POST",
       mode: "cors",
